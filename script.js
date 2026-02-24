@@ -64,3 +64,33 @@ function updateDashboard() {
     interviewCountEl.textContent = interview;
     rejectedCountEl.textContent = rejected;
 }
+
+function initializeCardEvents() {
+    const cards = getAllCards();
+
+    cards.forEach(card => {
+        const interviewBtn = card.querySelector(".btn-success");
+        const rejectBtn = card.querySelector(".btn-error");
+        const statusEl = card.querySelector(".Status");
+        const deleteBtn = card.querySelector(".fa-trash-can").parentElement;
+
+        interviewBtn.addEventListener("click", () => {
+            statusEl.textContent = "Interview";
+            statusEl.className = "Status bg-green-300 w-[90px]";
+            updateDashboard();
+        });
+
+        rejectBtn.addEventListener("click", () => {
+            statusEl.textContent = "Rejected";
+            statusEl.className = "Status bg-red-300 w-[90px]";
+            updateDashboard();
+        });
+
+        deleteBtn.addEventListener("click", () => {
+            card.remove();
+            updateDashboard();
+        });
+
+    });
+}
+

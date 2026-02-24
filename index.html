@@ -16,15 +16,15 @@
     <div class="grid grid-cols-3 gap-6">
         <div class="bg-slate-200 p-4 rounded-xl">
             <p class="font-bold">Total</p>
-            <p class="font-bold">8</p>
+            <p id="total" class="font-bold">8</p>
         </div>
         <div class="bg-slate-200 p-4 rounded-xl">
             <p class="font-bold">Interview</p>
-            <p class="font-bold">0</p>
+            <p id="interviewCount" class="font-bold">0</p>
         </div>
         <div class="bg-slate-200 p-4 rounded-xl">
             <p class="font-bold">Rejected</p>
-            <p class="font-bold">0</p>
+            <p id="rejectedCount" class="font-bold">0</p>
         </div>
     </div>
     </header>
@@ -34,10 +34,11 @@
     <main class="w-[80%] mx-auto">
         <h2 class="text-2xl font-bold text-black py-5">Available Jobs</h2>
         <div class="mb-6">
-            <button id="all-btn" class="btn bg-black text-white">All</button>
-            <button id="interview-btn" class="btn">Interview</button>
-            <button id="rejected-btn" class="btn">Rejected</button>
+            <button id="all-btn" onclick="showAll()" class="btn bg-black text-white">All</button>
+            <button id="interview-btn" onclick="showInterview()" class="btn bg-white text-black">Interview</button>
+            <button id="rejected-btn" onclick="showRejected()" class="btn bg-white text-black">Rejected</button>
         </div>
+
     </main>
 
     <section class="w-[80%] mx-auto">
@@ -217,5 +218,7 @@
         </div>
     </div>
 </section>
+
+<script src="./script.js"></script>
 </body>
 </html>

@@ -67,7 +67,6 @@ function updateDashboard() {
 
 function initializeCardEvents() {
     const cards = getAllCards();
-
     cards.forEach(card => {
         const interviewBtn = card.querySelector(".btn-success");
         const rejectBtn = card.querySelector(".btn-error");
@@ -93,4 +92,5 @@ function initializeCardEvents() {
 
     });
 }
+
 

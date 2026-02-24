@@ -39,59 +39,54 @@ function showRejected() {
 }
 
 
-const totalElement = document.getElementById("total");
-const interviewCountElement = document.getElementById("interviewCount");
-const rejectedCountElement = document.getElementById("rejectedCount");
-
-function getAllCards() {
-    return document.querySelectorAll("section > div");
-}
+const totalEl = document.getElementById("total");
+const interviewCountEl = document.getElementById("interviewCount");
+const rejectedCountEl = document.getElementById("rejectedCount");
 
 function updateDashboard() {
-    const cards = getAllCards();
 
+    const cards = document.querySelectorAll("section > div");
+
+    let total = cards.length;
     let interview = 0;
     let rejected = 0;
 
     cards.forEach(card => {
-        const status = card.querySelector(".Status").textContent;
+        const status = card.querySelector(".Status").textContent.trim();
 
         if (status === "Interview") interview++;
         if (status === "Rejected") rejected++;
     });
 
-    totalEl.textContent = cards.length;
+    totalEl.textContent = total;
     interviewCountEl.textContent = interview;
     rejectedCountEl.textContent = rejected;
 }
 
-function initializeCardEvents() {
-    const cards = getAllCards();
-    cards.forEach(card => {
-        const interviewBtn = card.querySelector(".btn-success");
-        const rejectBtn = card.querySelector(".btn-error");
-        const statusEl = card.querySelector(".Status");
-        const deleteBtn = card.querySelector(".fa-trash-can").parentElement;
+document.querySelectorAll("section > div").forEach(card => {
 
-        interviewBtn.addEventListener("click", () => {
-            statusEl.textContent = "Interview";
-            statusEl.className = "Status bg-green-300 w-[90px]";
-            updateDashboard();
-        });
+    const interviewBtn = card.querySelector(".btn-success");
+    const rejectBtn = card.querySelector(".btn-error");
+    const statusEl = card.querySelector(".Status");
+    const deleteBtn = card.querySelector(".fa-trash-can").parentElement;
 
-        rejectBtn.addEventListener("click", () => {
-            statusEl.textContent = "Rejected";
-            statusEl.className = "Status bg-red-300 w-[90px]";
-            updateDashboard();
-        });
-
-        deleteBtn.addEventListener("click", () => {
-            card.remove();
-            updateDashboard();
-        });
-
+    interviewBtn.addEventListener("click", function () {
+        statusEl.textContent = "Interview";
+        statusEl.className = "Status bg-green-300 w-[90px]";
+        updateDashboard();
     });
-}
 
-initializeCardEvents();
+    rejectBtn.addEventListener("click", function () {
+        statusEl.textContent = "Rejected";
+        statusEl.className = "Status bg-red-300 w-[90px]";
+        updateDashboard();
+    });
+
+    deleteBtn.addEventListener("click", function () {
+        card.remove();
+        updateDashboard();
+    });
+
+});
+
 updateDashboard();

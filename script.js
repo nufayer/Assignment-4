@@ -44,16 +44,13 @@ const interviewCountEl = document.getElementById("interviewCount");
 const rejectedCountEl = document.getElementById("rejectedCount");
 
 function updateDashboard() {
-
     const cards = document.querySelectorAll("section > div");
-
     let total = cards.length;
     let interview = 0;
     let rejected = 0;
-
+    
     cards.forEach(card => {
         const status = card.querySelector(".Status").textContent.trim();
-
         if (status === "Interview") interview++;
         if (status === "Rejected") rejected++;
     });
@@ -86,7 +83,6 @@ document.querySelectorAll("section > div").forEach(card => {
         card.remove();
         updateDashboard();
     });
-
 });
 
 updateDashboard();

@@ -47,3 +47,20 @@ function getAllCards() {
     return document.querySelectorAll("section > div");
 }
 
+function updateDashboard() {
+    const cards = getAllCards();
+
+    let interview = 0;
+    let rejected = 0;
+
+    cards.forEach(card => {
+        const status = card.querySelector(".Status").textContent;
+
+        if (status === "Interview") interview++;
+        if (status === "Rejected") rejected++;
+    });
+
+    totalEl.textContent = cards.length;
+    interviewCountEl.textContent = interview;
+    rejectedCountEl.textContent = rejected;
+}

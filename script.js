@@ -93,4 +93,5 @@ function initializeCardEvents() {
     });
 }
 
-
+initializeCardEvents();
+updateDashboard();

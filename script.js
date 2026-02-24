@@ -5,7 +5,7 @@ function setActive(activeId) {
         btn.classList.remove("bg-black", "text-white");
         btn.classList.add("bg-white", "text-black");
     });
-    
+
     const activebtn = document.getElementById(activeId);
     activebtn.classList.remove("bg-white", "text-black");
     activebtn.classList.add("bg-black", "text-white");
@@ -37,3 +37,13 @@ function showRejected() {
         card.style.display = status === "Rejected" ? "flex" : "none";
     });
 }
+
+
+const totalElement = document.getElementById("total");
+const interviewCountElement = document.getElementById("interviewCount");
+const rejectedCountElement = document.getElementById("rejectedCount");
+
+function getAllCards() {
+    return document.querySelectorAll("section > div");
+}
+
